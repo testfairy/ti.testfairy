@@ -1,151 +1,133 @@
-Appcelerator Titanium iPhone Module Project
-===========================================
+# TiTestFairy Official TestFairy Titanium Module for iOS
 
-This is a skeleton Titanium Mobile iPhone module project.  Modules can be 
-used to extend the functionality of Titanium by providing additional native
-code that is compiled into your application at build time and can expose certain
-APIs into JavaScript. 
+## Description
 
-MODULE NAMING
---------------
+The TiTestFairy Module extends the Appcelerator Titanium Mobile framework with the TestFairy iOS SDK. The TestFairy SDK allows integration with TestFairy to give you a better understanding of how your app performs on real devices. It tells you when and how people are using your app, and provides you with any metric you need to optimize for better user experience and better code.
 
-Choose a unique module id for your module.  This ID usually follows a namespace
-convention using DNS notation.  For example, com.appcelerator.module.test.  This
-ID can only be used once by all public modules in Titanium.
+More info and SDK reference: http://docs.testfairy.com/index.html
 
 
-COMPONENTS
------------
-
-Components that are exposed by your module must follow a special naming convention.
-A component (widget, proxy, etc) must be named with the pattern:
-
-	Ti<ModuleName><ComponentName>Proxy
-
-For example, if you component was called Foo, your proxy would be named:
-
-	TiMyfirstFooProxy
-	
-For view proxies or widgets, you must create both a view proxy and a view implementation. 
-If you widget was named proxy, you would create the following files:
-
-	TiMyfirstFooProxy.h
-	TiMyfirstFooProxy.m
-	TiMyfirstFoo.h
-	TiMyfirstFoo.m
-	
-The view implementation is named the same except it does contain the suffix `Proxy`.  
-
-View implementations extend the Titanium base class `TiUIView`.  View Proxies extend the
-Titanium base class `TiUIViewProxy` or `TiUIWidgetProxy`.  
-
-For proxies that are simply native objects that can be returned to JavaScript, you can 
-simply extend `TiProxy` and no view implementation is required.
+The module is licensed under the Apache license.
 
 
-GET STARTED
-------------
+## Referencing the module in your Titanium Mobile application ##
 
-1. Edit manifest with the appropriate details about your module.
-2. Edit LICENSE to add your license details.
-3. Place any assets (such as PNG files) that are required in the assets folder.
-4. Edit the titanium.xcconfig and make sure you're building for the right Titanium version.
-5. Code and build.
+Simply add the following lines to your `tiapp.xml` file:
+    
+    <modules>
+        <module platform="iphone">com.testfairy.titestfairy</module> 
+    </modules>
 
-BUILD TIME COMPILER CONFIG
---------------------------
+Add the module to your Titanium Mobile project via “Help”, "Install Mobile Module..." or by unzipping the contents of the module zip file into your Titanium/modules/iphone folder.
 
-You can edit the file `module.xcconfig` to include any build time settings that should be
-set during application compilation that your module requires.  This file will automatically get `#include` in the main application project.  
+To include the module in your code and use it:
 
-For more information about this file, please see the Apple documentation at:
+var TiTestFairy = require('com.testfairy.titestfairy');
 
-<http://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/XcodeBuildSystem/400-Build_Configurations/build_configs.html>
+Then connect to TestFairy with your App Token (from your TestFairy welcome email) and initialize a TestFairy session
 
-
-DOCUMENTATION FOR YOUR MODULE
------------------------------
-
-You should provide at least minimal documentation for your module in `documentation` folder using the Markdown syntax.
-
-For more information on the Markdown syntax, refer to this documentation at:
-
-<http://daringfireball.net/projects/markdown/>
+TiTestFairy.begin("<your API APP token>");
 
 
-TEST HARNESS EXAMPLE FOR YOUR MODULE
-------------------------------------
+## Reference
 
-The `example` directory contains a skeleton application test harness that can be 
-used for testing and providing an example of usage to the users of your module.
+For more detailed code examples take a look at the example app
 
+### TiTestFairy.version
 
-INSTALL YOUR MODULE
---------------------
+Returns the version of the TestFairy SDK, for example:
 
-1. Run `build.py` which creates your distribution
-2. cd to `/Library/Application Support/Titanium`
-3. copy this zip file into the folder of your Titanium SDK
-
-REGISTER YOUR MODULE
----------------------
-
-Register your module with your application by editing `tiapp.xml` and adding your module.
-Example:
-
-<modules>
-	<module version="0.1">com.testfairy.titestfairy</module>
-</modules>
-
-When you run your project, the compiler will know automatically compile in your module
-dependencies and copy appropriate image assets into the application.
-
-USING YOUR MODULE IN CODE
--------------------------
-
-To use your module in code, you will need to require it. 
-
-For example,
-
-	var my_module = require('com.testfairy.titestfairy');
-	my_module.foo();
-
-WRITING PURE JS NATIVE MODULES
-------------------------------
-
-You can write a pure JavaScript "natively compiled" module.  This is nice if you
-want to distribute a JS module pre-compiled.
-
-To create a module, create a file named com.testfairy.titestfairy.js under the assets folder.
-This file must be in the Common JS format.  For example:
-
-	exports.echo = function(s)
-	{
-		return s;
-	};
-	
-Any functions and properties that are exported will be made available as part of your
-module.  All other code inside your JS will be private to your module.
-
-For pure JS module, you don't need to modify any of the Objective-C module code. You
-can leave it as-is and build.
-
-TESTING YOUR MODULE
--------------------
-
-Run the `titanium.py` script to test your module or test from within XCode.
-To test with the script, execute:
-
-	titanium run --dir=YOURMODULEDIR
-	
-
-This will execute the app.js in the example folder as a Titanium application.
+`titleLabel.text = 'TestFairy SDK v' + TiTestFairy.version;`
 
 
-DISTRIBUTING YOUR MODULE
--------------------------
+### TiTestFairy.setCorrelationId(correlationId)
 
-Currently, you will need to manually distribution your module distribution zip file directly. However, in the near future, we will make module distribution and sharing built-in to Titanium Developer and in the Titanium Marketplace!
+* * correlationId* - a string containing a correlation identifier
+
+Set a correlation identifier for this session. This value can be looked up via web dashboard. For example, setting correlation to the value of the user-id after they logged in. Can be called only once per session (subsequent calls will be ignored.)
 
 
-Cheers!
+### TiTestFairy.pushFeedbackController()
+
+Pushes the feedback view controller. Hook a button to this method to allow users to provide feedback about the current session. All feedback will appear in your build report page, and in the recorded session page.
+
+
+### TiTestFairy.sendUserFeedback(string)
+
+* *string* - the feedback text string you wish to send 
+
+Send a feedback on behalf of the user. Call when using a in-house feedback view controller with a custom design and feel. Feedback will be associated with the current session.
+
+
+### TiTestFairy.updateLocation(locations)
+
+Proxy didUpdateLocation delegate values and these locations will appear in the recorded sessions. Useful for debugging actual long/lat values against what the user sees on screen.
+
+A basic solution to allow the passing of lat/long pairs to the TestFairy SDK the array passed can hold multiple lat/long pairs
+
+* *locations* - an array of location coordinate lat/long pairs in the following format:
+
+    {
+        latitude: 0.0,
+        longitude: 0.0
+    }
+
+Where the values of latitude and longitude are *double* 
+
+
+### TiTestFairy.checkpoint(checkpointName)
+
+Marks a checkpoint in session. Use this text to tag a session with a checkpoint name. Later you can filter sessions where your user passed through this checkpoint, for bettering understanding user experience and behavior.
+
+* *checkpointName* - a string containing the name for the checkpoint
+
+
+### TiTestFairy.pause()
+
+Pauses the current session until resume() is called.
+
+
+### TiTestFairy.resume()
+
+Resumes a paused session.
+
+
+### TiTestFairy.sessionUrl()
+
+Returns the address of the recorded session on TestFairy's developer portal. Will return nil if recording not yet started.
+
+
+### TiTestFairy.takeScreenshot()
+
+Takes a screenshot.
+
+
+
+Please check example/app.js for a full working example of all supported TestFairy SDK methods.
+
+
+
+## Changelog
+
+**v1.0**    
+
+* Initial Implementation. 
+
+
+
+
+## License
+
+    Copyright (c) 2015 TestFairy
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.

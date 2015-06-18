@@ -31,7 +31,7 @@ titleLabel.text = 'TestFairy SDK v' + TiTestFairy.version;
 
 // connect with your App Token (from your TestFairy welcome email) and initialize a TestFairy session
 
-TiTestFairy.begin("ce5b26d981f0777f5fdeef5223bd64b19512d410");
+TiTestFairy.begin("<Enter your API APP token here>");
 
 // Sets a correlation identifier for this session. This value can
 // be looked up via web dashboard. For example, setting correlation
