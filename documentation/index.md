@@ -67,10 +67,10 @@ A basic solution to allow the passing of lat/long pairs to the TestFairy SDK the
 
 * *locations* - an array of location coordinate lat/long pairs in the following format:
 
-    {
+    `{
         latitude: 0.0,
         longitude: 0.0
-    }
+    }`
 
 Where the values of latitude and longitude are *double* 
 
