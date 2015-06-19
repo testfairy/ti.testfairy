@@ -28,8 +28,7 @@
 		24DE9E1211C5FE74003F90F6 /* ComTestfairyTitestfairyModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComTestfairyTitestfairyModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* ComTestfairyTitestfairy_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComTestfairyTitestfairy_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		E11D0E751B25B21200862888 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E11D0E721B25B21200862888 /* libTestFairy.a */; };
-		E11D0E761B25B21200862888 /* TestFairy.h in Headers */ = {isa = PBXBuildFile; fileRef = E11D0E731B25B21200862888 /* TestFairy.h */; };
+		E11425F01B34670600C11F2D /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E11425ED1B3466E700C11F2D /* libTestFairy.a */; };
 		E11D0E781B25B23900862888 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E11D0E771B25B23900862888 /* CoreMedia.framework */; };
 		E11D0E7A1B25B24300862888 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E11D0E791B25B24300862888 /* CoreMotion.framework */; };
 		E11D0E7C1B25B24D00862888 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E11D0E7B1B25B24D00862888 /* AVFoundation.framework */; };
@@ -57,9 +56,9 @@
 		AA747D9E0F9514B9006C5449 /* ComTestfairyTitestfairy_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComTestfairyTitestfairy_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComTestfairyTitestfairy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComTestfairyTitestfairy.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E11D0E721B25B21200862888 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
-		E11D0E731B25B21200862888 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
-		E11D0E741B25B21200862888 /* upload-dsym.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "upload-dsym.sh"; sourceTree = "<group>"; };
+		E11425ED1B3466E700C11F2D /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
+		E11425EE1B3466E700C11F2D /* TestFairy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
+		E11425EF1B3466E700C11F2D /* upload-dsym.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "upload-dsym.sh"; sourceTree = "<group>"; };
 		E11D0E771B25B23900862888 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E11D0E791B25B24300862888 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		E11D0E7B1B25B24D00862888 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E11425F01B34670600C11F2D /* libTestFairy.a in Frameworks */,
 				E11D0E801B25B26000862888 /* OpenGLES.framework in Frameworks */,
 				E11D0E7E1B25B25500862888 /* SystemConfiguration.framework in Frameworks */,
 				E11D0E7C1B25B24D00862888 /* AVFoundation.framework in Frameworks */,
@@ -80,7 +80,6 @@
 				E11D0E781B25B23900862888 /* CoreMedia.framework in Frameworks */,
 				E1B9DFBD1B273665009EDEE2 /* CoreLocation.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-				E11D0E751B25B21200862888 /* libTestFairy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +122,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E11D0E711B25B21200862888 /* TestFairySDK-1.4.4 */,
+				E11425EC1B3466E700C11F2D /* TestFairySDK */,
 				24DE9E0F11C5FE74003F90F6 /* ComTestfairyTitestfairyModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* ComTestfairyTitestfairyModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* ComTestfairyTitestfairyModule.h */,
@@ -141,14 +140,14 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		E11D0E711B25B21200862888 /* TestFairySDK-1.4.4 */ = {
+		E11425EC1B3466E700C11F2D /* TestFairySDK */ = {
 			isa = PBXGroup;
 			children = (
-				E11D0E721B25B21200862888 /* libTestFairy.a */,
-				E11D0E731B25B21200862888 /* TestFairy.h */,
-				E11D0E741B25B21200862888 /* upload-dsym.sh */,
+				E11425ED1B3466E700C11F2D /* libTestFairy.a */,
+				E11425EE1B3466E700C11F2D /* TestFairy.h */,
+				E11425EF1B3466E700C11F2D /* upload-dsym.sh */,
 			);
-			path = "TestFairySDK-1.4.4";
+			path = TestFairySDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +157,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E11D0E761B25B21200862888 /* TestFairy.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* ComTestfairyTitestfairy_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* ComTestfairyTitestfairyModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* ComTestfairyTitestfairyModuleAssets.h in Headers */,
@@ -273,7 +271,10 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/TestFairySDK-1.4.4";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/TestFairySDK-1.4.4",
+					"$(PROJECT_DIR)/TestFairySDK",
+				);
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
@@ -311,7 +312,10 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/TestFairySDK-1.4.4";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/TestFairySDK-1.4.4",
+					"$(PROJECT_DIR)/TestFairySDK",
+				);
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ComTestfairyTitestfairy;
