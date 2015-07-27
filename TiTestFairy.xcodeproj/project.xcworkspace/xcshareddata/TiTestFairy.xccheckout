@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4875EF88-448B-41D1-A610-2DF7D134ECFC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TiTestFairy</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D3B88AD1803B672981B5E496B2147E9180E09328</key>
+		<string>github.com:testfairy/ti.testfairy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TiTestFairy.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D3B88AD1803B672981B5E496B2147E9180E09328</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:testfairy/ti.testfairy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D3B88AD1803B672981B5E496B2147E9180E09328</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D3B88AD1803B672981B5E496B2147E9180E09328</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ti.testfairy</string>
+		</dict>
+	</array>
+</dict>
+</plist>
