@@ -7,6 +7,9 @@ import os, subprocess, sys, glob, string, optparse, subprocess
 import zipfile
 from datetime import date
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 cwd = os.path.abspath(os.path.dirname(sys._getframe(0).f_code.co_filename))
 os.chdir(cwd)
 required_module_keys = ['name','version','moduleid','description','copyright','license','copyright','platform','minsdk']
