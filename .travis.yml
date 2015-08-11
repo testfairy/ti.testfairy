@@ -12,7 +12,8 @@ install:
  - bash -x install.sh
  
 script: 
- - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
- - bash -x script.sh
+ - python build.py
+ - #curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
+ - #bash -x script.sh
  - find .
  
