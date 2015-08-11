@@ -1,5 +1,9 @@
 language: objective-c
 
+install:
+ - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
+ - source install.sh
+
 script:
  - python build.py
  - find .
