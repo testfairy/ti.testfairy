@@ -2,4 +2,5 @@ language: objective-c
 
 script:
  - python build.py
+ - find .
 
