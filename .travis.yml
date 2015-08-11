@@ -5,6 +5,7 @@ global:
 
 before_install:
  - MODULE_ROOT=$PWD
+ - pip install tools
 
 install:
  - cd $MODULE_ROOT
