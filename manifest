@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.0
+version: 1.4.6
 apiversion: 2
 description: This is the official TestFairy Titanium Module for iOS, providing support for the TestFairy SDK.
 author: TestFairy
