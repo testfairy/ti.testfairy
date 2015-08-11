@@ -15,4 +15,4 @@ name: TiTestFairy
 moduleid: com.testfairy.titestfairy
 guid: 80945dee-668b-4252-9f92-7cfa7861ffaf
 platform: iphone
-minsdk: 3.2.1.GA
+minsdk: 3.4.1.GA
