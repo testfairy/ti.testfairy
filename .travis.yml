@@ -1,6 +1,13 @@
 language: objective-c
 
+global:
+ - "MODULE_NAME=com.testfairy.titestfairy"
+
+before_install:
+ - MODULE_ROOT=$PWD
+
 install:
+ - cd $MODULE_ROOT
  - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
  - source install.sh
  
