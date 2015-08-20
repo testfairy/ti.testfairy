@@ -5,7 +5,7 @@ global:
 
 before_install:
  - MODULE_ROOT=$PWD
- - sudo brew install jq
+ - brew install jq
  - sudo pip install tools
 
 install:
