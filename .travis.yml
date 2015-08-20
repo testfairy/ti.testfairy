@@ -1,21 +1,22 @@
 language: objective-c
 
+env:
 global:
  - "MODULE_NAME=com.testfairy.titestfairy"
 
 before_install:
  - MODULE_ROOT=$PWD
- - brew install jq
+ - # brew install jq
  - sudo pip install tools
 
 install:
  - cd $MODULE_ROOT
  - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
- - sudo bash -x install.sh
+ - source install.sh
  
 script: 
- - python build.py
- - #curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
- - #bash -x script.sh
+ - #python build.py
+ - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
+ - source script.sh
  - find .
  
