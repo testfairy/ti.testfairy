@@ -5,12 +5,12 @@ global:
 
 before_install:
  - MODULE_ROOT=$PWD
- - pip install tools
+ - sudo pip install tools
 
 install:
  - cd $MODULE_ROOT
  - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
- - bash -x install.sh
+ - sudo bash -x install.sh
  
 script: 
  - python build.py
