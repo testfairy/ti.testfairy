@@ -7,7 +7,7 @@ global:
 before_install:
  - MODULE_ROOT=$PWD
  - # brew install jq
- - sudo pip install tools
+ - # sudo pip install tools
 
 install:
  - cd $MODULE_ROOT
@@ -21,5 +21,5 @@ script:
  - # find .
  
 after_success: # and this only on success
-  - curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
-  - source deploy.sh
+  - # curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
+  - # source deploy.sh
