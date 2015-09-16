@@ -15,6 +15,11 @@ install:
  
  
 script: 
+ - find . -ls
  - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
  - source script.sh
- - find . -ls 
+ 
+after_success: # and this only on success
+ - # curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
+ - # source deploy.sh
+ - find . -ls
