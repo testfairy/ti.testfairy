@@ -15,12 +15,16 @@ install:
  
  
 script: 
+ - echo "hi 1" 
  - find . -ls
  - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
+ - echo "hi 2"
  - source script.sh
+ - echo "hi 3"
  
 after_success: # and this only on success
  - # curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
  - # source deploy.sh
+ - echo "hi 4"
  - cd $MODULE_ROOT
  - find . -ls
