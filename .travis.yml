@@ -23,8 +23,9 @@ script:
  - echo "hi 3"
  
 after_success: # and this only on success
- - # curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
- - # source deploy.sh
  - echo "hi 4"
+ - curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
+ - source deploy.sh
+ - echo "hi 5"
  - cd $MODULE_ROOT
  - find . -ls
