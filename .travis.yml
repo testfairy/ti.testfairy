@@ -22,4 +22,5 @@ script:
 after_success: # and this only on success
  - # curl -o deploy.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/deploy.sh
  - # source deploy.sh
+ - cd $MODULE_ROOT
  - find . -ls
