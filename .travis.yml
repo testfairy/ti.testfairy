@@ -13,7 +13,8 @@ install:
  - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
  - source install.sh
  
+ 
 script: 
  - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
  - source script.sh
- - find  . -ls 
+ - find . -ls 
