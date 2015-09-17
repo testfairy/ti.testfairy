@@ -14,12 +14,8 @@ install:
 - source install.sh
 
 script:
-- echo "hi 2" 
 - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
 - bash script.sh
-- echo "hi 3"
-- cd $MODULE_ROOT
-- find . -ls
 
 deploy:
   provider: releases
