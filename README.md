@@ -27,7 +27,7 @@ More info and SDK reference: http://docs.testfairy.com/index.html
 	TiTestFairy.begin("API_APP");
 ```
 
-For more detailed code examples take a look at the example app ????
+For more detailed code examples take a look at the [example app](https://github.com/testfairy/ti.testfairy/blob/feat-readme/example/app.js).
 
 ## Reference
 
@@ -52,7 +52,7 @@ For more detailed code examples take a look at the example app ????
 `TiTestFairy.takeScreenshot()` - Takes a screenshot.
 
 
-### License
+#### License
 
     Copyright (c) 2015 TestFairy
 
@@ -61,9 +61,3 @@ For more detailed code examples take a look at the example app ????
    You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
