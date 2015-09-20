@@ -5,10 +5,7 @@ The TiTestFairy Module extends the Appcelerator Titanium Mobile framework with t
 More info and SDK reference: http://docs.testfairy.com/index.html
 
 
-The module is licensed under the Apache license.
-
-
-### Installation
+## Installation
 
 * Simply add the following lines to your `tiapp.xml` file:
 ```xml
@@ -34,41 +31,28 @@ For more detailed code examples take a look at the example app ????
 
 ## Reference
 
-Returns the version of the TestFairy SDK, for example:
-`TiTestFairy.version;`
+`TiTestFairy.version;` - Returns the version of the TestFairy SDK.
 
-Set an identifier that can be looked up through dashboard
-`TiTestFairy.setCorrelationId(correlationId)`
+`TiTestFairy.setCorrelationId(correlationId)` - Set an identifier that can be looked up through dashboard.
 
-Present a feedback dialog to the user
-`TiTestFairy.pushFeedbackController()`
+`TiTestFairy.pushFeedbackController()` - Present a feedback dialog to the user.
 
-Send a feedback on behalf of the user. Call when using a in-house feedback view controller with a custom design and feel. Feedback will be associated with the current session.
-* *string* - the feedback text string you wish to send
-`TiTestFairy.sendUserFeedback(string)`
+`TiTestFairy.sendUserFeedback(string)` - Send a feedback on behalf of the user. Call when using a in-house feedback view controller with a custom design and feel. Feedback will be associated with the current session.
 
-Mark geo location at this point (to be used with `navigator.geolocation.getCurrentPosition`)
-* *locations* - an array of location coordinate lat/long pairs in the following format:`{latitude: 0.0, longitude: 0.0}`
-`TiTestFairy.updateLocation(locations)`
+`TiTestFairy.updateLocation(locations)` - Mark geo location at this point (to be used with `navigator.geolocation.getCurrentPosition`).
 
-Mark a checkpoint in session
-* *checkpointName* - a string containing the name for the checkpoint
-`TiTestFairy.checkpoint(checkpointName)`
+`TiTestFairy.checkpoint(checkpointName)` - Mark a checkpoint in session.
 
-Pauses the current session until resume() is called.
-`TiTestFairy.pause()`
+`TiTestFairy.pause()` - Pauses the current session until resume() is called.
 
-Resumes a paused session.
-`TiTestFairy.resume()`
+`TiTestFairy.resume()` - Resumes a paused session.
 
-Returns the address of the recorded session on TestFairy's developer portal. Will return nil if recording not yet started.
-`TiTestFairy.sessionUrl()`
+`TiTestFairy.sessionUrl()` - Returns the address of the recorded session on TestFairy's developer portal. Will return nil if recording not yet started.
 
-Takes a screenshot.
-`TiTestFairy.takeScreenshot()`
+`TiTestFairy.takeScreenshot()` - Takes a screenshot.
 
 
-## License
+### License
 
     Copyright (c) 2015 TestFairy
 
