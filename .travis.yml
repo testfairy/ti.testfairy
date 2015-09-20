@@ -21,7 +21,7 @@ deploy:
   provider: releases
   api_key:
     secure: PNh8JN7Qkh9iYq8fgVjGOO72us9/P2+ksxO7+Z0wC9SAiviZWWArndxvNL+CQNPd3CN6ImuOtEk1cHI+5M3VUpuUje6+h4SES1EVI9O6SJxMmHDpxlsl7O9qu6dHi30IMdpkRRBr0cEVHsDrhTdyPcUf0fv/AdXK3bKLv1ueE37hdIVp2ndo/6shovVNpYPSdKkHU72wbzkbd/v7a/HeAlV1R0C2yV35iawVbYJRO1vT5wKvFOnBmikHQgUywC1UKtIEgO7cEBP5nmIkyMALtw9P4shs1oQVh2XsUPICD+9VhzpHPmxDJKiaLM+LAmQfQdXRZw8C8rcqRkkKvcEhDL0g2PqQcJwLgPqqtgleUZmSUl4dM/2RlWd2nE7qolIjIfVfQ41k+vIDSS2uAA32FUN+j426QcYsg5BVAngHU1qL0pZUddBSaup06UaoBxPZv8ybsKFiUsALlkCepaVk0DaNjLZGZuJlJvVDrESUq0WJ2H/o6IQj9HA1EJmWL+t3znboGfbBFSV7IrrwE+vNIOHZanvmIa7XHSfO6BydGCeLMKGYgkFFz5J71oH6AEL5N92sgTS6RK7svbDT2wjeB4cT41DBQrYe2DqpOsuaT4NEjwroU9XmYM+kIOCadv2VTIT/lQmZLljprAVPIPTTHOiV+dFdP2RHF4a4ioBQc3s=
-  file: ios/com.testfairy.titestfairy-iphone-1.4.6.zip
+  file: ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
   skip_cleanup: true
   on:
     tags: true
