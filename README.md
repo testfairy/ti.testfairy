@@ -20,7 +20,7 @@ The module is licensed under the Apache license.
 * Download the [latest release.](https://github.com/testfairy/ti.testfairy/releases/latest/)
 
 * Add the module to your Titanium Mobiles
-  - via “Help”, "Install Mobile Module..." 
+  - “Help” -> "Install Mobile Module..." 
   - or by unzipping the contents of the module zip file into your Titanium/modules/iphone folder.
 
 * Include the module in your code and use it:
