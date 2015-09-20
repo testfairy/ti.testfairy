@@ -17,7 +17,7 @@ The module is licensed under the Apache license.
 </modules>
 ```
 
-* Download the [latest release.](/https://github.com/testfairy/ti.testfairy/releases/latest/)
+* Download the [latest release.](https://github.com/testfairy/ti.testfairy/releases/latest/)
 
 * Add the module to your Titanium Mobiles
   - via “Help”, "Install Mobile Module..." 
@@ -27,7 +27,7 @@ The module is licensed under the Apache license.
 
 ```javascript
 	var TiTestFairy = require('com.testfairy.titestfairy');
-	TiTestFairy.begin("<your API APP token>");
+	TiTestFairy.begin("API_APP");
 ```
 
 For more detailed code examples take a look at the example app ????
