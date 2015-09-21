@@ -1,9 +1,8 @@
-# TestFairy Titanium Module for iOS (TiTestFairy)
+# TestFairy Titanium Module for iOS
 
 The TiTestFairy Module extends the Appcelerator Titanium Mobile framework with the TestFairy iOS SDK. The TestFairy SDK allows integration with TestFairy to give you a better understanding of how your app performs on real devices. It tells you when and how people are using your app, and provides you with any metric you need to optimize for better user experience and better code.
 
 More info and SDK reference: http://docs.testfairy.com/index.html
-
 
 ## Installation
 
@@ -54,12 +53,4 @@ For more detailed code examples take a look at the [example app](https://github.
 
 #### License
 
-```
-Copyright (c) 2015 TestFairy
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-```
+Licensed under the Apache License, Version 2.0.
