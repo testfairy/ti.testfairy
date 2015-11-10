@@ -12,6 +12,8 @@ install:
   - cd $MODULE_ROOT
   - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
   - source install.sh
+  - find .
+  - find / -name "docgen.py"
 
 script:
   - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
