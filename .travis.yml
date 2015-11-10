@@ -1,28 +1,27 @@
 language: objective-c
-env: 
 
-global:
-- MODULE_NAME=com.testfairy.titestfairy
+env: 
+  global:
+    - MODULE_NAME=com.testfairy.titestfairy
 
 before_install:
-- export MODULE_ROOT=$PWD
-- brew update
+  - export MODULE_ROOT=$PWD
+  - brew update
 
 install:
-- cd $MODULE_ROOT
-- curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
-- source install.sh
+  - cd $MODULE_ROOT
+  - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
+  - source install.sh
 
 script:
-- curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
-- bash script.sh
+  - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
+  - bash script.sh
 
 deploy:
   provider: releases
   api_key:
-    secure: PNh8JN7Qkh9iYq8fgVjGOO72us9/P2+ksxO7+Z0wC9SAiviZWWArndxvNL+CQNPd3CN6ImuOtEk1cHI+5M3VUpuUje6+h4SES1EVI9O6SJxMmHDpxlsl7O9qu6dHi30IMdpkRRBr0cEVHsDrhTdyPcUf0fv/AdXK3bKLv1ueE37hdIVp2ndo/6shovVNpYPSdKkHU72wbzkbd/v7a/HeAlV1R0C2yV35iawVbYJRO1vT5wKvFOnBmikHQgUywC1UKtIEgO7cEBP5nmIkyMALtw9P4shs1oQVh2XsUPICD+9VhzpHPmxDJKiaLM+LAmQfQdXRZw8C8rcqRkkKvcEhDL0g2PqQcJwLgPqqtgleUZmSUl4dM/2RlWd2nE7qolIjIfVfQ41k+vIDSS2uAA32FUN+j426QcYsg5BVAngHU1qL0pZUddBSaup06UaoBxPZv8ybsKFiUsALlkCepaVk0DaNjLZGZuJlJvVDrESUq0WJ2H/o6IQj9HA1EJmWL+t3znboGfbBFSV7IrrwE+vNIOHZanvmIa7XHSfO6BydGCeLMKGYgkFFz5J71oH6AEL5N92sgTS6RK7svbDT2wjeB4cT41DBQrYe2DqpOsuaT4NEjwroU9XmYM+kIOCadv2VTIT/lQmZLljprAVPIPTTHOiV+dFdP2RHF4a4ioBQc3s=
+    secure: RbwClfiGE/SahgQnmFvvhhPjZ5I4SmOxBbFbxloNXLGu/D9LCHZlPs9vdBmkc72eiKImGudpiO0nVcE8opn86B7XzaOuHjHqL1XUYvHHTGS7K2b1mSbeda8Y8JY/M0RqWYI3U750XBh+sVyl353xr7Bkd+XiTGKTW2VqxzteGDtuGq9pBBTbKArMKZZqIfdw4hkwoelHyIrRHfxP4OnW0FNqV0MFp83lEZlLQg5TA6YbmjHWtcr9BYF5S3x3i/2R3iZy48dECIqtvXBiwi4P0iO2G5ttVMSLtiE3GkLV7W9gOcvz3lH+22bqjjuN96uQgu5XFNOqRn/MiuICg5g4IcxqMsA59KCRoBByJI9/RTKEcvZf9kcQMe/awfjwk/Baze6FmqoJVxFy53OBc4Zj+xoPdoImLF3vs4dRIQ11jADOMhqr0va3dpSUA4Ix894poucxiK2feQ/dh/GCM4GEbYf2uQe0hmmsYHfl7L9Rb7l/eKSBZzYp059HTC9Ys2shlLKFimOozoVucfrlyUP3vrHX8wF4bILbmJUfJQQTAwD41WSyzzwHNGFRwW/7dpmLmLZAFTLkzgFdWhmLB8xJ8usLSyAxDrqw5UZr8E+1+8aNekzZ1+RZcwXzTZgmas51Zf2UoorX6dxZfAOknRdlgUhx9TRjs3w7J3XQyjIp2j0=
   file: ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
-  skip_cleanup: true
   on:
     tags: true
     all_branches: true
