@@ -18,7 +18,7 @@ Simply add the following lines to your `tiapp.xml` file:
         <module platform="iphone">com.testfairy.titestfairy</module> 
     </modules>
 
-Add the module to your Titanium Mobile project via “Help”, "Install Mobile Module..." or by unzipping the contents of the module zip file into your Titanium/modules/iphone folder.
+Add the module to your Titanium Mobile project via "Help", "Install Mobile Module..." or by unzipping the contents of the module zip file into your Titanium/modules/iphone folder.
 
 To include the module in your code and use it:
 
@@ -42,7 +42,7 @@ Returns the version of the TestFairy SDK, for example:
 
 ### TiTestFairy.setCorrelationId(correlationId)
 
-* * correlationId* - a string containing a correlation identifier
+* *correlationId* - a string containing a correlation identifier
 
 Set a correlation identifier for this session. This value can be looked up via web dashboard. For example, setting correlation to the value of the user-id after they logged in. Can be called only once per session (subsequent calls will be ignored.)
 
