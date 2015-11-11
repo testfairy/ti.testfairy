@@ -20,6 +20,7 @@ install:
 script:
   - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
   - bash script.sh
+  - find . -ls
 
 deploy:
   provider: releases
