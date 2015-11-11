@@ -12,9 +12,9 @@ install:
   - cd $MODULE_ROOT
   - curl -o install.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/install.sh
   - source install.sh
-  - find .
-  - find / -name "docgen.py"
-
+  - git clone https://github.com/appcelerator/titanium_mobile
+  - export TI_ROOT=$PWD/titanium_mobile
+  
 script:
   - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
   - bash script.sh
