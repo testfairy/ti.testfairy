@@ -8,6 +8,7 @@ before_install:
   - export MODULE_ROOT=$PWD
   - brew update
   - sudo easy_install pyyaml
+  - sudo easy_install Pygments
 
 install:
   - cd $MODULE_ROOT
