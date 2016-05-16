@@ -24,12 +24,6 @@
 		</condition>
 	</fail>
 
-	<!-- Copy documentation subdirectories -->
-	<mkdir dir="${basedir}/documentation"/>
-	<copy todir="${basedir}/documentation">
-		<fileset dir="${basedir}/../documentation"/>
-	</copy>
-
 	<!-- Copy example subdirectories -->
 	<mkdir dir="${basedir}/example"/>
 	<copy todir="${basedir}/example">
@@ -42,14 +36,9 @@
 		<fileset dir="${basedir}/../assets"/>
 	</copy>
 
-	<!-- Copy license -->
-	<copy todir="${basedir}" file="${basedir}/../LICENSE"/>
-
 	<target name="cleancopy" description="Delete old copies">
-		<delete dir="${basedir}/documentation"/>
 		<delete dir="${basedir}/example"/>
 		<delete dir="${basedir}/assets"/>
-		<delete file="${basedir}/LICENSE"/>
 	</target>
 
 	<import file="${titanium.platform}/../module/android/build.xml"/>
