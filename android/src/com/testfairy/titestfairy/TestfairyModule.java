@@ -15,7 +15,7 @@ import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
 
-import com.testfairy.Testfairy;
+import com.testfairy.TestFairy;
 
 @Kroll.module(name="Testfairy", id="com.testfairy.titestfairy")
 public class TestfairyModule extends KrollModule
