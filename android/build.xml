@@ -42,4 +42,5 @@
 	</target>
 
 	<import file="${titanium.platform}/../module/android/build.xml"/>
+	<echo>${toString:classpath}</echo>
 </project>
