@@ -8,6 +8,8 @@
  */
 package com.testfairy.titestfairy;
 
+import android.content.Context;
+
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 
@@ -17,13 +19,13 @@ import org.appcelerator.kroll.common.TiConfig;
 
 import com.testfairy.TestFairy;
 
-@Kroll.module(name="Testfairy", id="com.testfairy.titestfairy")
+@Kroll.module(name="TestFairy", id="com.testfairy.titestfairy")
 public class TestfairyModule extends KrollModule
 {
-
 	// Standard Debugging variables
-	private static final String LCAT = "TestfairyModule";
+	private static final String LCAT = "TestFairyModule";
 	private static final boolean DBG = TiConfig.LOGD;
+	private static Context context;
 
 	// You can define constants with @Kroll.constant, for example:
 	// @Kroll.constant public static final String EXTERNAL_NAME = value;
@@ -33,33 +35,39 @@ public class TestfairyModule extends KrollModule
 		super();
 	}
 
+	@Kroll.onAppCreate
+	public static void onAppCreate(TiApplication app)
+	{
+		context = app.getApplicationContext();
+	}
+
 	// Methods
 	@Kroll.method
 	public void begin(String apiKey)
 	{
-		
+		TestFairy.begin(context, apiKey);
 	}
 
 	@Kroll.method
 	public String version()
 	{
-		return "version";
+		return TestFairy.getVersion();
 	}
 
 	@Kroll.method
 	public void pushFeedbackController()
 	{
-		
+		// TODO: No op
 	}
 
 	@Kroll.method
 	public void sendUserFeedback(String note)
 	{
-		
+		TestFairy.sendUserFeedback(note);
 	}
 
 	@Kroll.method
-	public void updateLocation(String note)
+	public void updateLocation(String location)
 	{
 		
 	}
@@ -67,37 +75,37 @@ public class TestfairyModule extends KrollModule
 	@Kroll.method
 	public void checkpoint(String name)
 	{
-		
+		TestFairy.addCheckpoint(name);
 	}
 
 	@Kroll.method
 	public void setCorrelationId(String name)
 	{
-		
+		TestFairy.setCorrelationId(name);
 	}
 
 	@Kroll.method
 	public void pause()
 	{
-		
+		TestFairy.pause();
 	}
 
 	@Kroll.method
 	public void resume()
 	{
-		
+		TestFairy.resume();
 	}
 
 	@Kroll.method
 	public String sessionUrl()
 	{
-		return "sessionUrl";
+		return TestFairy.getSessionUrl();
 	}
 
 	@Kroll.method
 	public void takeScreenshot()
 	{
-		
+		// TODO: No op		
 	}
 }
 
