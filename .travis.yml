@@ -20,13 +20,19 @@ install:
 script:
   - curl -o script.sh https://raw.githubusercontent.com/appcelerator-modules/ci/master/travis/script.sh
   - bash script.sh
-  - find . -ls
+
+before_deploy:
+  - sed -i '' -E "s/^version.+/version:$TRAVIS_TAG/" ./android/manifest
+  - sed -i '' -E "s/^version.+/version:$TRAVIS_TAG/" ios/manifest
+  - bash script.sh
 
 deploy:
   provider: releases
   api_key:
     secure: RbwClfiGE/SahgQnmFvvhhPjZ5I4SmOxBbFbxloNXLGu/D9LCHZlPs9vdBmkc72eiKImGudpiO0nVcE8opn86B7XzaOuHjHqL1XUYvHHTGS7K2b1mSbeda8Y8JY/M0RqWYI3U750XBh+sVyl353xr7Bkd+XiTGKTW2VqxzteGDtuGq9pBBTbKArMKZZqIfdw4hkwoelHyIrRHfxP4OnW0FNqV0MFp83lEZlLQg5TA6YbmjHWtcr9BYF5S3x3i/2R3iZy48dECIqtvXBiwi4P0iO2G5ttVMSLtiE3GkLV7W9gOcvz3lH+22bqjjuN96uQgu5XFNOqRn/MiuICg5g4IcxqMsA59KCRoBByJI9/RTKEcvZf9kcQMe/awfjwk/Baze6FmqoJVxFy53OBc4Zj+xoPdoImLF3vs4dRIQ11jADOMhqr0va3dpSUA4Ix894poucxiK2feQ/dh/GCM4GEbYf2uQe0hmmsYHfl7L9Rb7l/eKSBZzYp059HTC9Ys2shlLKFimOozoVucfrlyUP3vrHX8wF4bILbmJUfJQQTAwD41WSyzzwHNGFRwW/7dpmLmLZAFTLkzgFdWhmLB8xJ8usLSyAxDrqw5UZr8E+1+8aNekzZ1+RZcwXzTZgmas51Zf2UoorX6dxZfAOknRdlgUhx9TRjs3w7J3XQyjIp2j0=
-  file: ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
+  file: 
+     - ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
+     - android/dist/com.testfairy.titestfairy-android-${TRAVIS_TAG}.zip
   skip_cleanup: true
   on:
     tags: true

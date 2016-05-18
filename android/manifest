@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+architectures: armeabi armeabi-v7a x86
+description: testfairy
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2016 by Your Company
+
+# these should not be edited
+name: testfairy
+moduleid: com.testfairy.titestfairy
+guid: 4e1a27d7-ffaa-4725-ada1-f3122ae6c6a0
+platform: android
+minsdk: 5.2.2.GA
