@@ -74,12 +74,13 @@
 -(void)begin:(id)apitoken {
     
     ENSURE_SINGLE_ARG(apitoken, NSString);
-    [TestFairy begin:apitoken];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy begin:apitoken];
+    });
     return;
 }
 
 -(id)version {
-    
     return [TestFairy version];
 }
 
@@ -88,14 +89,18 @@
 -(void)pushFeedbackController:(id)args {
     
     ENSURE_UI_THREAD_0_ARGS;
-    [TestFairy pushFeedbackController];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy pushFeedbackController];
+    });
     return;
 }
 
 -(void)sendUserFeedback:(id)note {
     
     ENSURE_SINGLE_ARG(note, NSString);
-    [TestFairy sendUserFeedback:note];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy sendUserFeedback:note];
+    });
     return;
 }
 
@@ -119,45 +124,53 @@
         
         [locs addObject:loc];
     }
-    
-    [TestFairy updateLocation:locs];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy updateLocation:locs];
+    });
     return;
 }
 
 -(void)checkpoint:(id)name {
     
     ENSURE_SINGLE_ARG(name, NSString);
-    [TestFairy checkpoint:name];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy checkpoint:name];
+    });
     return;
 }
 
 -(void)setCorrelationId:(id)correlationId {
     
     ENSURE_SINGLE_ARG(correlationId, NSString);
-    [TestFairy setCorrelationId:correlationId];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy setCorrelationId:correlationId];
+    });
     return;
 }
 
 -(void)pause:(id)args {
-    
-    [TestFairy pause];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy pause];
+    });
     return;
 }
 
 -(void)resume:(id)args {
-    
-    [TestFairy resume];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy resume];
+    });
     return;
 }
 
 -(id)sessionUrl:(id)args {
-    
     return [TestFairy sessionUrl];
 }
 
 -(void)takeScreenshot:(id)args {
-    
-    [TestFairy takeScreenshot];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy takeScreenshot];
+    });
     return;
 }
 
