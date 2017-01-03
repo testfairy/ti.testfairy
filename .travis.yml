@@ -1,5 +1,8 @@
 language: objective-c
 
+node_js:
+  - "0.12"
+  
 env: 
   global:
     - MODULE_NAME=com.testfairy.titestfairy
