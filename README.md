@@ -1,7 +1,7 @@
 # TestFairy Titanium Module
 
 For class reference, installation and more information, please visit 
-[Titanium integration document](http://docs.testfairy.com/Integrations/Titanium.html) on TestFairy.
+[Titanium integration document](http://docs.testfairy.com/Platforms/Titanium.html) on TestFairy.
 
 License
 =======
