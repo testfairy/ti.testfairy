@@ -169,6 +169,13 @@
     });
 }
 
+-(void)setServerEndpoint:(id)endpoint {
+    ENSURE_SINGLE_ARG(endpoint, NSString);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy setServerEndpoint:endpoint];
+    });
+}
+
 -(void)log:(id)message {
     ENSURE_SINGLE_ARG(message, NSString);
     dispatch_async(dispatch_get_main_queue(), ^{
