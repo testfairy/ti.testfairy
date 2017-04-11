@@ -68,7 +68,6 @@
 	[super didReceiveMemoryWarning:notification];
 }
 
-
 #pragma Public APIs
 
 -(void)begin:(id)apitoken {
@@ -85,6 +84,14 @@
 }
 
 // hideView() is not currently implemented
+
+-(void)hideWebViewElements:(NSString *)cssSelector {
+    ENSURE_SINGLE_ARG(cssSelector, NSString);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy hideWebViewElements:cssSelector];
+    });
+    return;
+}
 
 -(void)pushFeedbackController:(id)args {
     
@@ -132,7 +139,6 @@
 }
 
 -(void)checkpoint:(id)name {
-    
     ENSURE_SINGLE_ARG(name, NSString);
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy checkpoint:name];
@@ -140,11 +146,43 @@
     return;
 }
 
--(void)setCorrelationId:(id)correlationId {
-    
+-(void)setCorrelationId:(id)correlationId {   
     ENSURE_SINGLE_ARG(correlationId, NSString);
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy setCorrelationId:correlationId];
+    });
+    return;
+}
+
+-(void)setUserId:(id)userId {
+    ENSURE_SINGLE_ARG(userId, NSString);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy setUserId:userId];
+    });
+    return;
+}
+
+-(void)setAttribute:(id)args {
+    NSString *value = [((NSArray *)args) objectAtIndex:0];
+    NSString *key = [((NSArray *)args) objectAtIndex:1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy setAttribute:key withValue:value];
+    });
+    return;
+}
+
+-(void)setScreenName:(id)name {
+    ENSURE_SINGLE_ARG(name, NSString);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy setScreenName:name];
+    });
+    return;
+}
+
+-(void)log:(id)message {
+    ENSURE_SINGLE_ARG(message, NSString);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        TFLog(@"%@", message);
     });
     return;
 }
@@ -159,6 +197,13 @@
 -(void)resume:(id)args {
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy resume];
+    });
+    return;
+}
+
+-(void)stop:(id)args {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TestFairy stop];
     });
     return;
 }

@@ -75,13 +75,55 @@ public class TestfairyModule extends KrollModule
 	@Kroll.method
 	public void checkpoint(String name)
 	{
-		TestFairy.addCheckpoint(name);
+		TestFairy.addEvent(name);
+	}
+
+	@Kroll.method
+	public void setServerEndpoint(String endpoint)
+	{
+		TestFairy.setServerEndpoint(endpoint);
+	}
+
+	@Kroll.method
+	public void setScreenName(String endpoint)
+	{
+		TestFairy.setScreenName(endpoint);
+	}
+
+	@Kroll.method
+	public void hideWebViewElements(String cssSelector)
+	{
+		// no op
 	}
 
 	@Kroll.method
 	public void setCorrelationId(String name)
 	{
 		TestFairy.setCorrelationId(name);
+	}
+
+	@Kroll.method
+	public void setUserId(String userId)
+	{
+		TestFairy.setUserId(userId);
+	}
+
+	@Kroll.method
+	public void setAttribute(String key, String value)
+	{
+		TestFairy.setAttribute(key, value);
+	}
+
+	@Kroll.method
+	public void log(String message)
+	{
+		TestFairy.log("TFTitanium", message);
+	}
+
+	@Kroll.method
+	public void stop()
+	{
+		TestFairy.stop();
 	}
 
 	@Kroll.method
