@@ -76,7 +76,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy begin:apitoken];
     });
-    return;
 }
 
 -(id)version {
@@ -90,7 +89,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy hideWebViewElements:cssSelector];
     });
-    return;
 }
 
 -(void)pushFeedbackController:(id)args {
@@ -99,7 +97,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy pushFeedbackController];
     });
-    return;
 }
 
 -(void)sendUserFeedback:(id)note {
@@ -108,7 +105,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy sendUserFeedback:note];
     });
-    return;
 }
 
 -(void)updateLocation:(id)locations
@@ -135,7 +131,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy updateLocation:locs];
     });
-    return;
 }
 
 -(void)checkpoint:(id)name {
@@ -143,7 +138,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy checkpoint:name];
     });
-    return;
 }
 
 -(void)setCorrelationId:(id)correlationId {   
@@ -151,7 +145,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy setCorrelationId:correlationId];
     });
-    return;
 }
 
 -(void)setUserId:(id)userId {
@@ -159,7 +152,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy setUserId:userId];
     });
-    return;
 }
 
 -(void)setAttribute:(id)args {
@@ -168,7 +160,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy setAttribute:key withValue:value];
     });
-    return;
 }
 
 -(void)setScreenName:(id)name {
@@ -176,7 +167,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy setScreenName:name];
     });
-    return;
 }
 
 -(void)log:(id)message {
@@ -184,28 +174,24 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         TFLog(@"%@", message);
     });
-    return;
 }
 
 -(void)pause:(id)args {
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy pause];
     });
-    return;
 }
 
 -(void)resume:(id)args {
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy resume];
     });
-    return;
 }
 
 -(void)stop:(id)args {
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy stop];
     });
-    return;
 }
 
 -(id)sessionUrl:(id)args {
@@ -216,7 +202,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy takeScreenshot];
     });
-    return;
 }
 
 @end
