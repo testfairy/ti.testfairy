@@ -1,6 +1,7 @@
 language: objective-c
 node_js:
-  - "0.12"
+  - "4"
+  - "5"
   
 env: 
   global:
@@ -14,9 +15,9 @@ before_install:
   - sudo easy_install Pygments
   - brew install nvm
   - source $(brew --prefix nvm)/nvm.sh
-  - nvm install 0.12
+  - nvm install 4
   - npm config delete prefix
-  - nvm use --delete-prefix v0.12.18
+  - nvm use --delete-prefix v4.4.7 4
 
 install:
   - cd $MODULE_ROOT
