@@ -1,25 +1,33 @@
 language: objective-c
-
 node_js:
-  - "0.12"
+  - "4"
+  - "5"
   
 env: 
   global:
     - MODULE_NAME=com.testfairy.titestfairy
+    - TRAVIS_NODE_VERSION="4"
 
 before_install:
   - export MODULE_ROOT=$PWD
   - brew update
   - sudo easy_install pyyaml
   - sudo easy_install Pygments
+  - brew install nvm
+  - source $(brew --prefix nvm)/nvm.sh
+  - nvm install 4
+  - npm config delete prefix
+  - nvm use --delete-prefix v4.4.7 4
 
 install:
   - cd $MODULE_ROOT
+  - # https://raw.githubusercontent.com/sgtcoolguy/ci/v8/travis/install.sh
   - source install.sh -s "--branch 5_1_X"
   - git clone --depth 1 https://github.com/appcelerator/titanium_mobile
   - export TI_ROOT=$PWD
   
 script:
+  - # https://raw.githubusercontent.com/sgtcoolguy/ci/v8/travis/script.sh
   - bash script.sh
 
 before_deploy:
