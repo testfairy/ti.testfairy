@@ -57,7 +57,7 @@ public class TestfairyModule extends KrollModule
 	@Kroll.method
 	public void pushFeedbackController()
 	{
-		// TODO: No op
+		TestFairy.showFeedbackForm();
 	}
 
 	@Kroll.method
@@ -69,7 +69,7 @@ public class TestfairyModule extends KrollModule
 	@Kroll.method
 	public void updateLocation(String location)
 	{
-		
+
 	}
 
 	@Kroll.method
@@ -147,7 +147,6 @@ public class TestfairyModule extends KrollModule
 	@Kroll.method
 	public void takeScreenshot()
 	{
-		// TODO: No op		
+		// TODO: No op
 	}
 }
-
