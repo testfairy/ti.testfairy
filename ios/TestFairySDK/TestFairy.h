@@ -3,6 +3,59 @@
 
 #define TF_DEPRECATED(x)  __attribute__ ((deprecated(x)))
 
+@protocol TestFairySessionStateDelegate <NSObject>
+@optional
+/**
+ * Callback when a session has successfully started on TestFairy.
+ */
+- (void)sessionStarted;
+
+/**
+ * Callback when a session failed to started. Could be because the recording
+ * is set to off, session limit has reached, request rejected or other reasons.
+ */
+- (void)sessionFailed;
+
+/**
+ * Callback when session length has reached. For example, if your session
+ * is set to maximum of 10 minutes, you will get a callback if such a limit
+ * was reached. You can start a new session if you wish to do so.
+ */
+- (void)sessionLengthReached:(float)secondsFromStartSession;
+
+/**
+ * Callback when session recording stopped. Could be because session length
+ * reached the limit, stop() was called, app moved to background for too long,
+ * or similar reason.
+ */
+- (void)sessionStopped;
+
+/**
+ * Callback when there is an update available. Either this method is called,
+ * or noAutoUpdateAvailable() is called.
+ */
+- (void)autoUpdateAvailable:(NSString *)url;
+
+/**
+ * Callback when a user was presented for a request of an auto-update, and
+ * then clicked "Yes".
+ */
+- (void)autoUpdateDownloadStarted;
+
+/**
+ * Callback when a user was displayed with a dialog asking if they would like to upgrade,
+ * and they clicked "No".
+ */
+- (void)autoUpdateDismissed;
+
+/**
+ * Callback when session start was requested and there was no auto update
+ * available. In this case, the user will not be displayed with a dialog box. Note
+ * that sessionFailed() could still be called.
+ */
+- (void)noAutoUpdateAvailable;
+@end
+
 @interface TestFairy: NSObject
 
 /**
@@ -23,6 +76,11 @@
  * 			- enableCrashReporter: @YES / @NO to enable crash handling. Default is @YES
  */
 + (void)begin:(NSString *)appToken withOptions:(NSDictionary *)options;
+
+/**
+ * Initialize the TestFairy SDK with only crash handling. No sessions will be recorded.
+ */
++ (void)installCrashHandler:(NSString *)appToken;
 
 /**
  * Change the server endpoint for use with on-premise hosting. Please
@@ -267,7 +325,7 @@
  * Values for fps must be between 0.1 and 2.0. Value will be rounded to
  * the nearest frame.
  */
-+ (void)enableVideo:(NSString *)policy quality:(NSString*)quality framesPerSecond:(float)fps;
++ (void)enableVideo:(NSString *)policy quality:(NSString *)quality framesPerSecond:(float)fps;
 
 /**
  * Disables the ability to capture video recording. Must be
@@ -283,7 +341,7 @@
  * the build settings will be used. Must be called before
  * begin.
  */
-+ (void)enableFeedbackForm:(NSString*) method;
++ (void)enableFeedbackForm:(NSString *) method;
 
 /**
  * Disables the ability to present users with feedback when
@@ -291,6 +349,13 @@
  * before begin.
  */
 + (void)disableFeedbackForm;
+
+/**
+ * Disable auto updates for this build. Even if there's a newer
+ * build available through TestFairy, ignore it, and continue
+ * using the current build. Must be called before begin
+ */
++ (void)disableAutoUpdate;
 
 /**
  * Sets the maximum recording time. Minimum value is 60 seconds,
@@ -301,6 +366,73 @@
  * Must be called before begin.
  */
 + (void)setMaxSessionLength:(float)seconds;
+
+/**
+ * Determines whether the "email field" in the Feedback form will be visible or not.
+ * default is true
+ *
+ * @param visible BOOL
+ */
++ (void)setFeedbackEmailVisible:(BOOL)visible;
+
+/**
+ * Query the distribution status of this build. Distribution is not required
+ * for working with the TestFairy SDK, meaning, you can use the SDK with the App Store.
+ *
+ * The distribution status can be either "enabled" or "disabled", and optionally, can have
+ * an auto-update. This method is useful if you're using TestFairy in your development
+ * stage and want to know if you expired the distribution of this version in your dashboard.
+ *
+ * Possible response keys:
+ *
+ * response[@"status"] = @"enabled" or @"disabled"
+ * response[@"autoUpdateDownloadUrl"] = @"<url to download url>"
+ *
+ * @param appToken App token as used with begin()
+ * @param callback to receive asynchornous response. Response dictionary can be nil
+ */
++ (void)getDistributionStatus:(NSString *)appToken callback:(void(^)(NSDictionary<NSString *, NSString *> *, NSError*))callback;
+
+/**
+ * Enable end-to-end encryption for this session. Screenshots and logs will be encrypted using
+ * this RSA key. Please refer to the documentation to learn more about the subject and how
+ * to create public/private key pair.
+ *
+ * @param publicKey RSA Public Key converted to DER format and encoded in base64
+ */
++ (void)setPublicKey:(NSString *)publicKey;
+
+/**
+ * Set the delegate object to listent to TestFairy events. See @TestFairySessionStateDelegate
+ * for more information
+ */
++ (void)setSessionStateDelegate:(id<TestFairySessionStateDelegate>)delegate;
+
+/**
+ * Call this function to log your network events.
+ */
++ (void)addNetwork:(NSURLSessionTask *)task error:(NSError *)error;
++ (void)addNetwork:(NSURL *)url
+			method:(NSString *)method
+			code:(int)code
+ startTimeInMillis:(long)startTime
+   endTimeInMillis:(long)endTime
+	   requestSize:(long)requestSize
+	  responseSize:(long)responseSize
+	  errorMessage:(NSString*)error;
+/**
+ * Send an NSError to TestFairy.
+ * Note, this function is limited to 5 errors.
+ * @param error NSError
+ * @param trace Stacktrace
+ */
++ (void)logError:(NSError *)error stacktrace:(NSArray *)trace;
++ (void)logError:(NSError *)error;
+
+/**
+ * Force crash (only for testing purposes)
+ */
++ (void)crash;
 
 @end
 
