@@ -99,14 +99,23 @@
 
 /**
  * Hides a specific view from appearing in the video generated.
+ * Holds a weak reference to the view
  *
  * @param view The specific view you wish to hide from screenshots
- *
  */
 + (void)hideView:(UIView *)view;
 
 /**
- * Hides a specific html element from appearing in your UIWebView
+ * Removes a view added to hideView. Useful for table views
+ * which reuse cells, where cells only need to be hidden
+ * conditionally.
+ *
+ * @param view The specific view added to hideView
+ */
++ (void)unhideView:(UIView *)view;
+
+/**
+ * Hides a specific html element from appearing in your WKWebView
  *
  * @param selector The specific selector you wish to hide from screenshots. Multiple selectors can be comma separated
  */
@@ -127,6 +136,20 @@
  * and in the recorded session page.
  */
 + (void)showFeedbackForm;
+
+/**
+ * Displays the feedback form. Allow users to provide
+ * feedback without prior call to begin. All feedback
+ * will appear in your build report page, and in
+ * "Feedbacks" tab.
+ *
+ * This method is different from showFeedbackForm by
+ * that it does not require a call to begin().
+ *
+ * @param appToken Your key as given to you in your TestFairy account
+ * @param takeScreenshot whether screenshot should be automatically added
+ */
++ (void)showFeedbackForm:(NSString *)appToken takeScreenshot:(BOOL)takeScreenshot;
 
 /**
  * Send a feedback on behalf of the user. Call when using a in-house
