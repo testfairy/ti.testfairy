@@ -21,7 +21,7 @@ install:
   - appc login --username $USERNAME --password $PASSWORD
   - appc ti sdk install 8.0.0.GA
   - wget https://dl.google.com/android/repository/android-ndk-r17c-darwin-x86_64.zip
-  - unzip android-ndk-r17c-darwin-x86_64.zip
+  - unzip -q android-ndk-r17c-darwin-x86_64.zip
   - appc ti config android.sdkPath $ANDROID_HOME
   - appc ti config android.ndkPath ${PWD}/android-ndk-r17c
 
