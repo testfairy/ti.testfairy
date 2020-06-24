@@ -13,7 +13,6 @@ before_install:
 - echo yes | android update sdk --filter android-28 --no-ui --force > /dev/null
 - echo yes | android update sdk --filter build-tools-28.0.3 --all --no-ui --force > /dev/null
 - echo yes | android update sdk --filter addon-google_apis-google-28 --all --no-ui --force > /dev/null
-- android list sdk
 
 install:
   - nvm install v10.21.0
@@ -21,10 +20,10 @@ install:
   - npm install appcelerator@5.0.0 -g
   - appc login --username $USERNAME --password $PASSWORD
   - appc ti sdk install 8.0.0.GA
-  - wget http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
-  - tar xzf android-ndk-r8c-darwin-x86.tar.bz2
+  - wget https://dl.google.com/android/repository/android-ndk-r17c-darwin-x86_64.zip
+  - unzip android-ndk-r17c-darwin-x86_64.zip
   - appc ti config android.sdkPath $ANDROID_HOME
-  - appc ti config android.ndkPath ${PWD}/android-ndk-r8c
+  - appc ti config android.ndkPath ${PWD}/android-ndk-r17c
 
 script:
   - cd ios
