@@ -1,4 +1,5 @@
 language: objective-c
+osx_image: xcode11.2
 before_install:
 - brew tap AdoptOpenJDK/openjdk
 - brew cask install adoptopenjdk8
