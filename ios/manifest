@@ -2,18 +2,17 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version:2.23.0
+version: 1.0.0
 apiversion: 2
-architectures: armv7 armv7s i386 x86_64 arm64
-description: This is the official TestFairy Titanium Module for iOS, providing support for the TestFairy SDK.
-author: TestFairy
-license: Apache
-copyright: Copyright (c) 2016 TestFairy
-
+architectures: armv7 arm64 i386 x86_64
+description: ti.testfairy
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2020 by Your Company
 
 # these should not be edited
-name: TiTestFairy
+name: ti.testfairy
 moduleid: com.testfairy.titestfairy
-guid: 80945dee-668b-4252-9f92-7cfa7861ffaf
+guid: 66eab273-78f5-4634-95ac-6e7a189cc519
 platform: iphone
-minsdk: 3.4.1.GA
+minsdk: 8.0.0.GA
