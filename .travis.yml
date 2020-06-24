@@ -1,45 +1,40 @@
 language: objective-c
-node_js:
-  - "4"
-  - "5"
-  
-env: 
-  global:
-    - MODULE_NAME=com.testfairy.titestfairy
-    - TRAVIS_NODE_VERSION="4"
-
 before_install:
-  - export MODULE_ROOT=$PWD
-  - brew update
-  - sudo easy_install pyyaml
-  - sudo easy_install Pygments
-  - brew install nvm
-  - source $(brew --prefix nvm)/nvm.sh
-  - nvm install 4
-  - npm config delete prefix
-  - nvm use --delete-prefix v4.4.7 4
+- brew tap AdoptOpenJDK/openjdk
+- brew cask install adoptopenjdk8
+- ls /Library/Java/JavaVirtualMachines/
+- export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+- wget http://dl.google.com/android/android-sdk_r24.4.1-macosx.zip
+- unzip android-sdk_r24.4.1-macosx.zip
+- export ANDROID_HOME=$PWD/android-sdk-macosx
+- export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+- echo yes | android update sdk --filter platform-tools --no-ui --force > /dev/null
+- echo yes | android update sdk --filter android-28 --no-ui --force > /dev/null
+- echo yes | android update sdk --filter build-tools-28.0.3 --all --no-ui --force > /dev/null
+- echo yes | android update sdk --filter addon-google_apis-google-28 --all --no-ui --force > /dev/null
 
 install:
-  - cd $MODULE_ROOT
-  - # https://raw.githubusercontent.com/sgtcoolguy/ci/v8/travis/install.sh
-  - source install.sh -s "--branch 5_1_X"
-  - git clone --depth 1 https://github.com/appcelerator/titanium_mobile
-  - export TI_ROOT=$PWD
-  
-script:
-  - # https://raw.githubusercontent.com/sgtcoolguy/ci/v8/travis/script.sh
-  - bash script.sh
+  - nvm install v10.21.0
+  - nvm use v10.21.0
+  - npm install appcelerator@5.0.0 -g
+  - appc login --username $USERNAME --password $PASSWORD
+  - appc ti sdk install 8.0.0.GA
+  - wget http://dl.google.com/android/ndk/android-ndk-r8c-darwin-x86.tar.bz2
+  - tar xzf android-ndk-r8c-darwin-x86.tar.bz2
+  - appc ti config android.sdkPath $ANDROID_HOME
+  - appc ti config android.ndkPath ${PWD}/android-ndk-r8c
 
-before_deploy:
-  - sed -i '' -E "s/^version.+/version:$TRAVIS_TAG/" ./android/manifest
-  - sed -i '' -E "s/^version.+/version:$TRAVIS_TAG/" ios/manifest
-  - bash script.sh
+script:
+  - cd ios
+  - appc run -p ios --build-only --sdk 8.0.0.GA --log-level debug
+  - cd ../android
+  - appc run -p android --build-only --sdk 8.0.0.GA
 
 deploy:
   provider: releases
   api_key:
     secure: RbwClfiGE/SahgQnmFvvhhPjZ5I4SmOxBbFbxloNXLGu/D9LCHZlPs9vdBmkc72eiKImGudpiO0nVcE8opn86B7XzaOuHjHqL1XUYvHHTGS7K2b1mSbeda8Y8JY/M0RqWYI3U750XBh+sVyl353xr7Bkd+XiTGKTW2VqxzteGDtuGq9pBBTbKArMKZZqIfdw4hkwoelHyIrRHfxP4OnW0FNqV0MFp83lEZlLQg5TA6YbmjHWtcr9BYF5S3x3i/2R3iZy48dECIqtvXBiwi4P0iO2G5ttVMSLtiE3GkLV7W9gOcvz3lH+22bqjjuN96uQgu5XFNOqRn/MiuICg5g4IcxqMsA59KCRoBByJI9/RTKEcvZf9kcQMe/awfjwk/Baze6FmqoJVxFy53OBc4Zj+xoPdoImLF3vs4dRIQ11jADOMhqr0va3dpSUA4Ix894poucxiK2feQ/dh/GCM4GEbYf2uQe0hmmsYHfl7L9Rb7l/eKSBZzYp059HTC9Ys2shlLKFimOozoVucfrlyUP3vrHX8wF4bILbmJUfJQQTAwD41WSyzzwHNGFRwW/7dpmLmLZAFTLkzgFdWhmLB8xJ8usLSyAxDrqw5UZr8E+1+8aNekzZ1+RZcwXzTZgmas51Zf2UoorX6dxZfAOknRdlgUhx9TRjs3w7J3XQyjIp2j0=
-  file: 
+  file:
      - ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
      - android/dist/com.testfairy.titestfairy-android-${TRAVIS_TAG}.zip
   skip_cleanup: true
