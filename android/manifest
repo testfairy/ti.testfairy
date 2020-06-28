@@ -5,10 +5,10 @@
 version: 1.0.0
 apiversion: 4
 architectures: arm64-v8a armeabi-v7a x86
-description: ti.testfairy
-author: Your Name
-license: Specify your license
-copyright: Copyright (c) 2020 by Your Company
+description: This is the official TestFairy Titanium Module for Android, providing support for the TestFairy SDK.
+author: TestFairy
+license: Apache
+copyright: Copyright (c) 2020 TestFairy
 
 # these should not be edited
 name: ti.testfairy
