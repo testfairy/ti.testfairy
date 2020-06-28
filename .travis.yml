@@ -44,9 +44,9 @@ script:
   - cd ../android
   - appc run -p android --build-only --sdk 8.0.0.GA
   - cd ..
-  - unzip -l ios/dist/android/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip
+  - unzip -l ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip
   - cp ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip  "/Users/vsharma/Library/Application Support/Titanium/."
-  - unzip -l android/dist/android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip
+  - unzip -l android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip
   - cp android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip "/Users/vsharma/Library/Application Support/Titanium/."
 
 deploy:
