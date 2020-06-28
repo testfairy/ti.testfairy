@@ -26,10 +26,28 @@ install:
   - appc ti config android.ndkPath ${PWD}/android-ndk-r17c
 
 script:
+  - ANDROID_SDK_VERSION=1.11.0
+  - IOS_VERSION=1.24.3
+  - TITANIUM_VERSION=${TRAVIS_TAG:-2.26.0}
+  - echo "Creating ti.testfairy version ${TITANIUM_VERSION}"
+  - sed -i '' "s/^version:.*/version: ${TITANIUM_VERSION}/g" android/manifest
+  - sed -i '' "s/^version:.*/version: ${TITANIUM_VERSION}/g" ios/manifest
+  - rm android/lib/testfairy-android-sdk.jar
+  - rm -rf ios/TestFairySDK
+  - mkdir ios/TestFairySDK
+  - curl -s -L https://dl.bintray.com/testfairy/testfairy/testfairy/testfairy-android-sdk/${ANDROID_SDK_VERSION}/testfairy-android-sdk-${ANDROID_SDK_VERSION}.jar -o android/lib/testfairy-android-sdk.jar
+  - curl -s -L https://s3.amazonaws.com/testfairy/sdk/TestFairySDK-${IOS_VERSION}.zip -o  ios/TestFairySDK/TestFairySDK.zip
+  -  unzip -d ios/TestFairySDK ios/TestFairySDK/TestFairySDK.zip
+  - rm ios/TestFairySDK/TestFairySDK.zip
   - cd ios
-  - appc run -p ios --build-only --sdk 8.0.0.GA --log-level trace
+  - appc run -p ios --build-only --sdk 8.0.0.GA
   - cd ../android
   - appc run -p android --build-only --sdk 8.0.0.GA
+  - cd ..
+  - unzip -l ios/dist/android/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip
+  - cp ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip  "/Users/vsharma/Library/Application Support/Titanium/."
+  - unzip -l android/dist/android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip
+  - cp android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip "/Users/vsharma/Library/Application Support/Titanium/."
 
 deploy:
   provider: releases
