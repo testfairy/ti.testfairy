@@ -52,8 +52,7 @@ script:
 - unzip -l android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip
 - cp android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip "/Users/travis/Library/Application
   Support/Titanium/."
-- appc new -t app -n TestFairyDemo --id com.testfairy.ti.demo --no-prompt
-- cd TestFairyDemo && appc run -p ios -T simulator && cd ..
+
 deploy:
   provider: releases
   api_key:
