@@ -27,7 +27,7 @@ install:
 
 script:
   - cd ios
-  - appc run -p ios --build-only --sdk 8.0.0.GA --log-level debug
+  - appc run -p ios --build-only --sdk 8.0.0.GA --log-level trace
   - cd ../android
   - appc run -p android --build-only --sdk 8.0.0.GA
 
