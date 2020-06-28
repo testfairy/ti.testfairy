@@ -15,6 +15,8 @@ import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
 
+import android.content.Context;
+import com.testfairy.TestFairy;
 
 @Kroll.module(name="TiTestfairy", id="com.testfairy.titestfairy")
 public class TiTestfairyModule extends KrollModule
@@ -23,6 +25,7 @@ public class TiTestfairyModule extends KrollModule
 	// Standard Debugging variables
 	private static final String LCAT = "TiTestfairyModule";
 	private static final boolean DBG = TiConfig.LOGD;
+	private static Context context;
 
 	// You can define constants with @Kroll.constant, for example:
 	// @Kroll.constant public static final String EXTERNAL_NAME = value;
@@ -35,33 +38,116 @@ public class TiTestfairyModule extends KrollModule
 	@Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app)
 	{
-		Log.d(LCAT, "inside onAppCreate");
-		// put module init code that needs to run when the application is created
+		context = app.getApplicationContext();
 	}
 
-	// Methods
+// Methods
 	@Kroll.method
-	public String example()
+	public void begin(String apiKey)
 	{
-		Log.d(LCAT, "example called");
-		return "hello world";
+		TestFairy.begin(context, apiKey);
 	}
 
-	// Properties
 	@Kroll.method
-	@Kroll.getProperty
-	public String getExampleProp()
+	public String version()
 	{
-		Log.d(LCAT, "get example property");
-		return "hello world";
+		return TestFairy.getVersion();
 	}
 
+	@Kroll.method
+	public void pushFeedbackController()
+	{
+		TestFairy.showFeedbackForm();
+	}
 
 	@Kroll.method
-	@Kroll.setProperty
-	public void setExampleProp(String value) {
-		Log.d(LCAT, "set example property: " + value);
+	public void sendUserFeedback(String note)
+	{
+		TestFairy.sendUserFeedback(note);
+	}
+
+	@Kroll.method
+	public void updateLocation(String location)
+	{
+
+	}
+
+	@Kroll.method
+	public void checkpoint(String name)
+	{
+		TestFairy.addEvent(name);
+	}
+
+	@Kroll.method
+	public void setServerEndpoint(String endpoint)
+	{
+		TestFairy.setServerEndpoint(endpoint);
+	}
+
+	@Kroll.method
+	public void setScreenName(String endpoint)
+	{
+		TestFairy.setScreenName(endpoint);
+	}
+
+	@Kroll.method
+	public void hideWebViewElements(String cssSelector)
+	{
+		// no op
+	}
+
+	@Kroll.method
+	public void setCorrelationId(String name)
+	{
+		TestFairy.setCorrelationId(name);
+	}
+
+	@Kroll.method
+	public void setUserId(String userId)
+	{
+		TestFairy.setUserId(userId);
+	}
+
+	@Kroll.method
+	public void setAttribute(String key, String value)
+	{
+		TestFairy.setAttribute(key, value);
+	}
+
+	@Kroll.method
+	public void log(String message)
+	{
+		TestFairy.log("TFTitanium", message);
+	}
+
+	@Kroll.method
+	public void stop()
+	{
+		TestFairy.stop();
+	}
+
+	@Kroll.method
+	public void pause()
+	{
+		TestFairy.pause();
+	}
+
+	@Kroll.method
+	public void resume()
+	{
+		TestFairy.resume();
+	}
+
+	@Kroll.method
+	public String sessionUrl()
+	{
+		return TestFairy.getSessionUrl();
+	}
+
+	@Kroll.method
+	public void takeScreenshot()
+	{
+		// TODO: No op
 	}
 
 }
-
