@@ -30,8 +30,8 @@ script:
   - IOS_VERSION=1.24.3
   - TITANIUM_VERSION=${TRAVIS_TAG:-2.26.0}
   - echo "Creating ti.testfairy version ${TITANIUM_VERSION}"
-  - sed -i '' "s/^version:.*/version: ${TITANIUM_VERSION}/g" android/manifest
-  - sed -i '' "s/^version:.*/version: ${TITANIUM_VERSION}/g" ios/manifest
+  - 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" android/manifest'
+  - 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" ios/manifest'
   - rm android/lib/testfairy-android-sdk.jar
   - rm -rf ios/TestFairySDK
   - mkdir ios/TestFairySDK
