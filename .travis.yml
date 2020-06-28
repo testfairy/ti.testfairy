@@ -58,7 +58,7 @@ deploy:
   api_key:
     secure: g9tgt24b0/Gsz7wJ93uPYIAAbpr/b6hXuLh3WLB+KCL53rkjxRK0Sy/kiVAduwkiaS3C3vgNm3KIE7uONFHD3nnupoiE1uYnTsvuamiQoPaYsLfC2jxbCdYJ1k+eEDs9BBCJwvkX0z8WHLhsGLHwmWb4SGXNN8C+8jjXzfMhsda32weCghkXnCvuwEbd5otNX9goqFXPxMzZd1dg8zuqVxV6Y7lGABXb6BaIyg33Nbz3YBG/FaTyT08pbC5PaA7JsGVkxF6P6XXpBX9MaAPVYM7661mg1r0PK92djXfjVjnZDwd7Cib0WWoprdsBq7Vut7r2Oz+rwOcqeLidAk+kYuESO/YUq67mxkgNcz0mv3vXeFw5sM7EtbLAXmypH6Ofz0AxospF7moos4dBPhOpl4YgIuuSKYhSYhFNM3X6vbYk7XzzRnppOrgyUg+vL148/aDFfqSd27Sv2hFufG0QHpWSav60kGMezYCn8gS+zTEdSeyYsOIm1dXAMVHUEYZtXlTq7q3fBV+GYqUcHJeoXoVfq8eu9Oymdiil1U0cAOuzKeCAZOh7/0ZLB9aRoI0nS7Qu/fQ5vcE2tIqsnyfymnYe4z8x3yRH9/ifcqv8sUuoyJmVntIsDkDNxEkR49mKt+3sDm/8PmaFBm6g4wYuP4+aMvt/PRG7zQnO3jxLh/k=
   file:
-    - ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
+    - ios/dist/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
     - android/dist/com.testfairy.titestfairy-android-${TRAVIS_TAG}.zip
   skip_cleanup: true
   on:
