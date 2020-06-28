@@ -11,51 +11,56 @@ before_install:
 - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 - echo yes | android update sdk --filter platform-tools --no-ui --force > /dev/null
 - echo yes | android update sdk --filter android-28 --no-ui --force > /dev/null
-- echo yes | android update sdk --filter build-tools-28.0.3 --all --no-ui --force > /dev/null
-- echo yes | android update sdk --filter addon-google_apis-google-28 --all --no-ui --force > /dev/null
-
+- echo yes | android update sdk --filter build-tools-28.0.3 --all --no-ui --force
+  > /dev/null
+- echo yes | android update sdk --filter addon-google_apis-google-28 --all --no-ui
+  --force > /dev/null
 install:
-  - nvm install v10.21.0
-  - nvm use v10.21.0
-  - npm install appcelerator@5.0.0 -g
-  - appc login --username $USERNAME --password $PASSWORD
-  - appc ti sdk install 8.0.0.GA
-  - wget https://dl.google.com/android/repository/android-ndk-r17c-darwin-x86_64.zip
-  - unzip -q android-ndk-r17c-darwin-x86_64.zip
-  - appc ti config android.sdkPath $ANDROID_HOME
-  - appc ti config android.ndkPath ${PWD}/android-ndk-r17c
-
+- nvm install v10.21.0
+- nvm use v10.21.0
+- npm install appcelerator@5.0.0 -g
+- appc login --username $USERNAME --password $PASSWORD
+- appc ti sdk install 8.0.0.GA
+- wget https://dl.google.com/android/repository/android-ndk-r17c-darwin-x86_64.zip
+- unzip -q android-ndk-r17c-darwin-x86_64.zip
+- appc ti config android.sdkPath $ANDROID_HOME
+- appc ti config android.ndkPath ${PWD}/android-ndk-r17c
 script:
-  - ANDROID_SDK_VERSION=1.11.0
-  - IOS_VERSION=1.24.3
-  - TITANIUM_VERSION=${TRAVIS_TAG:-2.26.0}
-  - echo "Creating ti.testfairy version ${TITANIUM_VERSION}"
-  - 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" android/manifest'
-  - 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" ios/manifest'
-  - rm android/lib/testfairy-android-sdk.jar
-  - rm -rf ios/TestFairySDK
-  - mkdir ios/TestFairySDK
-  - curl -s -L https://dl.bintray.com/testfairy/testfairy/testfairy/testfairy-android-sdk/${ANDROID_SDK_VERSION}/testfairy-android-sdk-${ANDROID_SDK_VERSION}.jar -o android/lib/testfairy-android-sdk.jar
-  - curl -s -L https://s3.amazonaws.com/testfairy/sdk/TestFairySDK-${IOS_VERSION}.zip -o  ios/TestFairySDK/TestFairySDK.zip
-  -  unzip -d ios/TestFairySDK ios/TestFairySDK/TestFairySDK.zip
-  - rm ios/TestFairySDK/TestFairySDK.zip
-  - cd ios
-  - appc run -p ios --build-only --sdk 8.0.0.GA
-  - cd ../android
-  - appc run -p android --build-only --sdk 8.0.0.GA
-  - cd ..
-  - unzip -l ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip
-  - cp ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip  "/Users/travis/Library/Application Support/Titanium/."
-  - unzip -l android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip
-  - cp android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip "/Users/travis/Library/Application Support/Titanium/."
-
+- ANDROID_SDK_VERSION=1.11.0
+- IOS_VERSION=1.24.3
+- TITANIUM_VERSION=${TRAVIS_TAG:-2.26.0}
+- echo "Creating ti.testfairy version ${TITANIUM_VERSION}"
+- 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" android/manifest'
+- 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" ios/manifest'
+- rm android/lib/testfairy-android-sdk.jar
+- rm -rf ios/TestFairySDK
+- mkdir ios/TestFairySDK
+- curl -s -L https://dl.bintray.com/testfairy/testfairy/testfairy/testfairy-android-sdk/${ANDROID_SDK_VERSION}/testfairy-android-sdk-${ANDROID_SDK_VERSION}.jar
+  -o android/lib/testfairy-android-sdk.jar
+- curl -s -L https://s3.amazonaws.com/testfairy/sdk/TestFairySDK-${IOS_VERSION}.zip
+  -o  ios/TestFairySDK/TestFairySDK.zip
+- unzip -d ios/TestFairySDK ios/TestFairySDK/TestFairySDK.zip
+- rm ios/TestFairySDK/TestFairySDK.zip
+- cd ios
+- appc run -p ios --build-only --sdk 8.0.0.GA
+- cd ../android
+- appc run -p android --build-only --sdk 8.0.0.GA
+- cd ..
+- unzip -l ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip
+- cp ios/dist/com.testfairy.titestfairy-iphone-${TITANIUM_VERSION}.zip  "/Users/travis/Library/Application
+  Support/Titanium/."
+- unzip -l android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip
+- cp android/dist/com.testfairy.titestfairy-android-${TITANIUM_VERSION}.zip "/Users/travis/Library/Application
+  Support/Titanium/."
+- appc new -t app -n TestFairyDemo --id com.testfairy.ti.demo --no-prompt
+- appc run -p ios -T simulator
 deploy:
   provider: releases
   api_key:
-    secure: RbwClfiGE/SahgQnmFvvhhPjZ5I4SmOxBbFbxloNXLGu/D9LCHZlPs9vdBmkc72eiKImGudpiO0nVcE8opn86B7XzaOuHjHqL1XUYvHHTGS7K2b1mSbeda8Y8JY/M0RqWYI3U750XBh+sVyl353xr7Bkd+XiTGKTW2VqxzteGDtuGq9pBBTbKArMKZZqIfdw4hkwoelHyIrRHfxP4OnW0FNqV0MFp83lEZlLQg5TA6YbmjHWtcr9BYF5S3x3i/2R3iZy48dECIqtvXBiwi4P0iO2G5ttVMSLtiE3GkLV7W9gOcvz3lH+22bqjjuN96uQgu5XFNOqRn/MiuICg5g4IcxqMsA59KCRoBByJI9/RTKEcvZf9kcQMe/awfjwk/Baze6FmqoJVxFy53OBc4Zj+xoPdoImLF3vs4dRIQ11jADOMhqr0va3dpSUA4Ix894poucxiK2feQ/dh/GCM4GEbYf2uQe0hmmsYHfl7L9Rb7l/eKSBZzYp059HTC9Ys2shlLKFimOozoVucfrlyUP3vrHX8wF4bILbmJUfJQQTAwD41WSyzzwHNGFRwW/7dpmLmLZAFTLkzgFdWhmLB8xJ8usLSyAxDrqw5UZr8E+1+8aNekzZ1+RZcwXzTZgmas51Zf2UoorX6dxZfAOknRdlgUhx9TRjs3w7J3XQyjIp2j0=
+    secure: g9tgt24b0/Gsz7wJ93uPYIAAbpr/b6hXuLh3WLB+KCL53rkjxRK0Sy/kiVAduwkiaS3C3vgNm3KIE7uONFHD3nnupoiE1uYnTsvuamiQoPaYsLfC2jxbCdYJ1k+eEDs9BBCJwvkX0z8WHLhsGLHwmWb4SGXNN8C+8jjXzfMhsda32weCghkXnCvuwEbd5otNX9goqFXPxMzZd1dg8zuqVxV6Y7lGABXb6BaIyg33Nbz3YBG/FaTyT08pbC5PaA7JsGVkxF6P6XXpBX9MaAPVYM7661mg1r0PK92djXfjVjnZDwd7Cib0WWoprdsBq7Vut7r2Oz+rwOcqeLidAk+kYuESO/YUq67mxkgNcz0mv3vXeFw5sM7EtbLAXmypH6Ofz0AxospF7moos4dBPhOpl4YgIuuSKYhSYhFNM3X6vbYk7XzzRnppOrgyUg+vL148/aDFfqSd27Sv2hFufG0QHpWSav60kGMezYCn8gS+zTEdSeyYsOIm1dXAMVHUEYZtXlTq7q3fBV+GYqUcHJeoXoVfq8eu9Oymdiil1U0cAOuzKeCAZOh7/0ZLB9aRoI0nS7Qu/fQ5vcE2tIqsnyfymnYe4z8x3yRH9/ifcqv8sUuoyJmVntIsDkDNxEkR49mKt+3sDm/8PmaFBm6g4wYuP4+aMvt/PRG7zQnO3jxLh/k=
   file:
-     - ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
-     - android/dist/com.testfairy.titestfairy-android-${TRAVIS_TAG}.zip
+    - ios/com.testfairy.titestfairy-iphone-${TRAVIS_TAG}.zip
+    - android/dist/com.testfairy.titestfairy-android-${TRAVIS_TAG}.zip
   skip_cleanup: true
   on:
     tags: true
