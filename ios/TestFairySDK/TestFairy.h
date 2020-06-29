@@ -151,14 +151,37 @@
  */
 + (void)showFeedbackForm:(NSString *)appToken takeScreenshot:(BOOL)takeScreenshot;
 
+
+/**
+ * Start collecting feedback by having your users either capture a
+ * screenshot or recording before filling the Feedback form. All
+ * feedbacks will appear in your build report page, and on the
+ * "Feedbacks" tab.
+ *
+ * Does not require a call to begin().
+ *
+ * @param appToken Your key as given to you in your TestFairy account
+ * @param intent Either "video" or "screenshot"
+ */
++ (void)startFeedback:(NSString *)appToken withIntent:(NSString *)intent;
+
 /**
  * Send a feedback on behalf of the user. Call when using a in-house
  * feedback view controller with a custom design and feel. Feedback will
  * be associated with the current session.
  *
- * @param feedbackString Feedback text
+ * @param feedback Feedback text
  */
-+ (void)sendUserFeedback:(NSString *)feedbackString;
++ (void)sendUserFeedback:(NSString *)feedback;
+
+/**
+ * Send a feedback on behalf of the user. Call when using a in-house
+ * feedback view controller with a custom design and feel. Feedback will
+ * be associated with the current session.
+ *
+ * @param text Feedback text
+ */
++ (void)sendUserFeedback:(NSString *)appToken text:(NSString *)text screenshot:(UIImage *)image;
 
 /**
  * Proxy didUpdateLocation delegate values and these
@@ -247,6 +270,14 @@
  *
  */
 + (void)takeScreenshot;
+
+/**
+ * Adds a screenshot to the current moment in session.
+ * Overrides the current screen recording system
+ *
+ * @param image Screenshot to add
+ */
++ (void)addScreenshot:(UIImage *)image;
 
 /**
  * Set the name of the current screen. Useful for single page
@@ -424,6 +455,11 @@
  * @param publicKey RSA Public Key converted to DER format and encoded in base64
  */
 + (void)setPublicKey:(NSString *)publicKey;
+
+/**
+ * Define whether logs or screenshots are encrypted. Should be called before setPublicKey
+ */
++ (void)setEncryptionPolicy:(BOOL)encryptScreenshots encryptLogs:(BOOL)encryptLogs;
 
 /**
  * Set the delegate object to listent to TestFairy events. See @TestFairySessionStateDelegate

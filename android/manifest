@@ -2,17 +2,17 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version:2.23.0
-apiversion: 2
-architectures: armeabi armeabi-v7a x86
-description: testfairy
-author: Your Name
-license: Specify your license
-copyright: Copyright (c) 2016 by Your Company
+version: 2.15.0
+apiversion: 4
+architectures: arm64-v8a armeabi-v7a x86
+description: This is the official TestFairy Titanium Module for Android, providing support for the TestFairy SDK.
+author: TestFairy
+license: Apache
+copyright: Copyright (c) 2020 TestFairy
 
 # these should not be edited
-name: testfairy
+name: ti.testfairy
 moduleid: com.testfairy.titestfairy
-guid: 4e1a27d7-ffaa-4725-ada1-f3122ae6c6a0
+guid: 66eab273-78f5-4634-95ac-6e7a189cc519
 platform: android
-minsdk: 5.2.2.GA
+minsdk: 8.0.0.GA

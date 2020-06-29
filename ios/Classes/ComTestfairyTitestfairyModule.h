@@ -1,13 +1,13 @@
 /**
- * Copyright 21015 TestFairy
+ * ti.testfairy
  *
- * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
- * and licensed under the Apache Public License (version 2)
+ * Copyright (c) 2020 TestFairy. All rights reserved.
  */
+
 #import "TiModule.h"
 
-@interface ComTestfairyTitestfairyModule : TiModule 
-{
+@interface ComTestfairyTitestfairyModule : TiModule {
+
 }
 
 @end

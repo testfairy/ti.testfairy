@@ -1,5 +1,5 @@
 // This is a test harness for the TiTestFairy module
-//  
+//
 // The following code presents a screen with test buttons for all of the
 // applicable TestFairy SDK API methods
 //

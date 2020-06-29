@@ -1,6 +1,6 @@
-<project name="testfairy" default="dist">
+<project name="ti.testfairy" default="dist">
 	<description>
-		Ant build script for Titanium Android module testfairy
+		Ant build script for Titanium Android module ti.testfairy
 	</description>
 
 	<property name="ti.module.root" location="${basedir}"/>
@@ -24,6 +24,12 @@
 		</condition>
 	</fail>
 
+	<!-- Copy documentation subdirectories -->
+	<mkdir dir="${basedir}/documentation"/>
+	<copy todir="${basedir}/documentation">
+		<fileset dir="${basedir}/../documentation"/>
+	</copy>
+
 	<!-- Copy example subdirectories -->
 	<mkdir dir="${basedir}/example"/>
 	<copy todir="${basedir}/example">
@@ -36,9 +42,14 @@
 		<fileset dir="${basedir}/../assets"/>
 	</copy>
 
+	<!-- Copy license -->
+	<copy todir="${basedir}" file="${basedir}/../LICENSE"/>
+
 	<target name="cleancopy" description="Delete old copies">
+		<delete dir="${basedir}/documentation"/>
 		<delete dir="${basedir}/example"/>
 		<delete dir="${basedir}/assets"/>
+		<delete file="${basedir}/LICENSE"/>
 	</target>
 
 	<import file="${titanium.platform}/../module/android/build.xml"/>

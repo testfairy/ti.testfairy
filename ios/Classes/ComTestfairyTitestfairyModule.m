@@ -1,71 +1,41 @@
 /**
- * Copyright 21015 TestFairy
+ * ti.testfairy
  *
- * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
- * and licensed under the Apache Public License (version 2)
+ * Copyright (c) 2020 TestFairy. All rights reserved.
  */
+
 #import "ComTestfairyTitestfairyModule.h"
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
 
 #import "TestFairy.h"
-
 #import <CoreLocation/CoreLocation.h>
-
 
 @implementation ComTestfairyTitestfairyModule
 
 #pragma mark Internal
 
-// this is generated for your module, please do not change it
--(id)moduleGUID
+// This is generated for your module, please do not change it
+- (id)moduleGUID
 {
-	return @"80945dee-668b-4252-9f92-7cfa7861ffaf";
+  return @"66eab273-78f5-4634-95ac-6e7a189cc519";
 }
 
-// this is generated for your module, please do not change it
--(NSString*)moduleId
+// This is generated for your module, please do not change it
+- (NSString *)moduleId
 {
-	return @"com.testfairy.titestfairy";
+  return @"com.testfairy.titestfairy";
 }
 
 #pragma mark Lifecycle
 
--(void)startup
+- (void)startup
 {
-	// this method is called when the module is first loaded
-	// you *must* call the superclass
-	[super startup];
-	
-	NSLog(@"[INFO] %@ loaded",self);
-}
-
--(void)shutdown:(id)sender
-{
-	// this method is called when the module is being unloaded
-	// typically this is during shutdown. make sure you don't do too
-	// much processing here or the app will be quit forceably
-	
-	// you *must* call the superclass
-	[super shutdown:sender];
-}
-
-#pragma mark Cleanup 
-
--(void)dealloc
-{
-	// release any resources that have been retained by the module
-	[super dealloc];
-}
-
-#pragma mark Internal Memory Management
-
--(void)didReceiveMemoryWarning:(NSNotification*)notification
-{
-	// optionally release any resources that can be dynamically
-	// reloaded once memory is available - such as caches
-	[super didReceiveMemoryWarning:notification];
+  // This method is called when the module is first loaded
+  // You *must* call the superclass
+  [super startup];
+  DebugLog(@"[DEBUG] %@ loaded", self);
 }
 
 #pragma Public APIs
@@ -84,7 +54,7 @@
 
 // hideView() is not currently implemented
 
--(void)hideWebViewElements:(NSString *)cssSelector {
+-(void)hideWebViewElements:(id)cssSelector {
     ENSURE_SINGLE_ARG(cssSelector, NSString);
     dispatch_async(dispatch_get_main_queue(), ^{
         [TestFairy hideWebViewElements:cssSelector];
@@ -95,7 +65,7 @@
     
     ENSURE_UI_THREAD_0_ARGS;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [TestFairy pushFeedbackController];
+        [TestFairy showFeedbackForm];
     });
 }
 
@@ -136,14 +106,14 @@
 -(void)checkpoint:(id)name {
     ENSURE_SINGLE_ARG(name, NSString);
     dispatch_async(dispatch_get_main_queue(), ^{
-        [TestFairy checkpoint:name];
+        [TestFairy addEvent:name];
     });
 }
 
--(void)setCorrelationId:(id)correlationId {   
+-(void)setCorrelationId:(id)correlationId {
     ENSURE_SINGLE_ARG(correlationId, NSString);
     dispatch_async(dispatch_get_main_queue(), ^{
-        [TestFairy setCorrelationId:correlationId];
+        [TestFairy setUserId:correlationId];
     });
 }
 
