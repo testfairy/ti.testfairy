@@ -224,6 +224,16 @@
 + (void)addEvent:(NSString *)name;
 
 /**
+ * Adds a new user interaction to the timeline. Can be used by non-native UI frameworks to report
+ * user interactions such as clicks, long-clicks and double clicks.
+ *
+ * @param kind Kind of interaction to add [button pressed = 1, button long pressed = 8, button double tapped = 9]
+ * @param label Text content of the clicked view
+ * @param info (Optional) Extra meta data, accepted keys are "accessibilityLabel", "accessibilityIdentifier", "accessibilityHint" and "className"
+ */
++ (void)addUserInteraction:(int)kind label:(NSString *)label info:(NSDictionary *)info;
+
+/**
  * Sets a correlation identifier for this session. This value can
  * be looked up via web dashboard. For example, setting correlation
  * to the value of the user-id after they logged in. Can be called
@@ -279,10 +289,14 @@
 + (NSString *)sessionUrl;
 
 /**
- * Takes a screenshot.
- *
+ * Takes a screenshot and sends it to TestFairy
  */
 + (void)takeScreenshot;
+
+/**
+ * Takes a screenshot. Can return nil.
+ */
++ (void)takeScreenshot:(void(^)(UIImage *))callback;
 
 /**
  * Adds a screenshot to the current moment in session.
@@ -392,7 +406,13 @@
  * Values for fps must be between 0.1 and 2.0. Value will be rounded to
  * the nearest frame.
  */
-+ (void)enableVideo:(NSString *)policy quality:(NSString *)quality framesPerSecond:(float)fps;
++ (void)enableVideo:(NSString *)policy quality:(NSString *)quality framesPerSecond:(float)fps TF_DEPRECATED("Please refer to enableVideo:");
+
+/**
+ * Enables the ability to capture video recording regardless of build settings.
+ * Valid values for policy include "always" and "wifi"
+ */
++ (void)enableVideo:(NSString *)policy;
 
 /**
  * Disables the ability to capture video recording. Must be
@@ -446,7 +466,7 @@
  * Customize the feedback form
  *
  * Accepted dictionary values: @{
- * 	@"defaultText": <Default feedback text>,
+ * 	@"defaultText": @"Default feedback text",
  * 	@"isEmailMandatory": @NO|@YES,
  * 	@"isEmailVisible": @NO|@YES
  * }
@@ -500,9 +520,13 @@
 + (void)setSessionStateDelegate:(id<TestFairySessionStateDelegate>)delegate;
 
 /**
- * Call this function to log your network events.
+ * Log network calls to TestFairy.
  */
 + (void)addNetwork:(NSURLSessionTask *)task error:(NSError *)error;
+
+/**
+ * Log network calls to TestFairy
+ */
 + (void)addNetwork:(NSURL *)url
 			method:(NSString *)method
 			code:(int)code
@@ -511,6 +535,10 @@
 	   requestSize:(long)requestSize
 	  responseSize:(long)responseSize
 	  errorMessage:(NSString*)error;
+
+/**
+ * Log network calls to TestFairy, include request and response payloads.
+ */
 + (void)addNetwork:(NSURL *)url
 			method:(NSString *)method
 			  code:(int)code
