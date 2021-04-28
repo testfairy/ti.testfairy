@@ -27,7 +27,7 @@ install:
 - appc ti config android.ndkPath ${PWD}/android-ndk-r17c
 script:
 - ANDROID_SDK_VERSION=1.12.6
-- IOS_VERSION=1.28.6
+- IOS_VERSION=1.28.7
 - TITANIUM_VERSION=${TRAVIS_TAG:-2.26.0}
 - echo "Creating ti.testfairy version ${TITANIUM_VERSION}"
 - 'sed -i "" "s/^version:.*/version: ${TITANIUM_VERSION}/g" android/manifest'
