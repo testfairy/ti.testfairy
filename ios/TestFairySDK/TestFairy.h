@@ -263,6 +263,10 @@ typedef TestFairyFeedbackContent * (^TestFairyFeedbackInterceptor)(TestFairyFeed
 + (void)installFeedbackHandler:(NSString *)appToken method:(NSString *)method;
 
 /**
+ * Disables a previously installed feedback handler. Stops listening user shakes to prompt feedback alerts.
+ */
++ (void)uninstallFeedbackHandler;
+/**
  * Change the server endpoint for use with on-premise hosting. Please
  * contact support or sales for more information. Must be called before begin
  *
